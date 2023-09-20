@@ -21,19 +21,19 @@ public class GameController {
     }
 
 
-    @GetMapping
+    @GetMapping (value = "/list")
     public ResponseEntity<List<Game>> getAllEntities(){
         List<Game> games = service.readAll();
         return ResponseEntity.status(HttpStatus.OK).body(games);
     }
 
-    @PostMapping
+    @PostMapping (value = "/list")
     public ResponseEntity<Game> createGame(@RequestBody Game game){
         Game createdGame = service.create(game);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdGame);
     }
 
-    @DeleteMapping
+    @DeleteMapping (value = "/list/{id}")
     public ResponseEntity<Game> deleteGame(@PathVariable Long id){
         Game deleteThisGame = service.read(id);
         service.delete(id);
